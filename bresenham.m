@@ -18,9 +18,9 @@ function [x y]=bresenham(x1,y1,x2,y2)
 
 x1=round(x1); x2=round(x2);
 y1=round(y1); y2=round(y2);
-dx=abs(x2-x1)
-dy=abs(y2-y1)
-steep=abs(dy)>abs(dx) %steep is logical
+dx=abs(x2-x1);
+dy=abs(y2-y1);
+steep=abs(dy)>abs(dx); %steep is logical
 if steep t=dx;dx=dy;dy=t; end
 
 %The main algorithm goes here.
