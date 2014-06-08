@@ -17,18 +17,20 @@ tam = 64;
 
 soma(1) = 0;
 %for para o loop que armazena o conjunto de pontos de cada angulo
-for n = 1:1
+for n = 1:9
     %hipotenusa para angulo até 45 graus 
     ca = tam/2;
     hip  = ca/(cosd(ang));
     co = sind(ang)*hip;
     
     %encontra os pontos para até 45 graus
-    if (co + tam / 2) > tam
-        y = tam;
+    if (tam / 2 - co) < 1
+        y = 1;
     else
-        y = tam / 2 + co;
+        y = tam / 2 - co;
     end
+    
+    x = tam;
 
     %traça a reta que vai do ponto inicial até os pontos encontrados em x e y
     [x y] = bresenham(pix,piy,x,y);
@@ -37,7 +39,7 @@ for n = 1:1
     linha(n).x = x;
     linha(n).y = y;
      
-     
+     ang = ang + 5;
      
      
 end
