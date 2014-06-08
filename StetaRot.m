@@ -9,15 +9,21 @@ mag = abs((fftshift(fft2(img))));
 %ponto inicial x e y
 pix = 32;
 piy = 32;
+%ponto final x e y
+pfx = 0;
+pfy = 0;
+%esse pontos iram variam conforme o angulo muda
 
 %angulo inicial do algoritmo
 ang = 5;
 
 tam = 64;
+iters = 9;
+ultima_soma = 0;
+somas = zeros(iters);
 
-soma(1) = 0;
 %for para o loop que armazena o conjunto de pontos de cada angulo
-for n = 1:9
+for n = 1:iters
     %hipotenusa para angulo até 45 graus 
     ca = tam/2;
     hip  = ca/(cosd(ang));
@@ -25,25 +31,23 @@ for n = 1:9
     
     %encontra os pontos para até 45 graus
     if (tam / 2 - co) < 1
-        y = 1;
+        pfy = 1;
     else
-        y = tam / 2 - co;
+        pfy = tam / 2 - co;
     end
     
-    x = tam;
+    pfx = tam;
 
     %traça a reta que vai do ponto inicial até os pontos encontrados em x e y
-    [x y] = bresenham(pix,piy,x,y);
-
+    [x y] = bresenham(pix,piy,pfx,pfy);
+    
+    
     %coloca os pontos encontrados pelo algoritmo de bresenham na struct
-    linha(n).x = x;
-    linha(n).y = y;
+    ultima_soma = soma(x, y, ultima_soma, mag);
+    somas(n) = ultima_soma;
+    %linha(n).y = y;
      
-     ang = ang + 5;
+        ang = ang + 5;
      
      
 end
-
-fileID = fopen('data.txt','w');
-fprintf(fileID,'%6.2f ',mag);
-fclose(fileID);
