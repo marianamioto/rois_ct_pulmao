@@ -1,0 +1,100 @@
+anotacoes
+%somando primitivamente
+
+
+
+soma = 0;
+
+for m =1:length(linha(4).x)
+    i =abs( linha(4).x(m))
+    j = abs(linha(4).y(m))
+    
+    if i == guiax & j == guiay
+        soma = soma + mag(i,j);
+    else
+        while i <= guiax
+            soma = soma + mag(i,j);
+            i = i + 1;
+        end
+    end
+    guiax = guiax + 1;
+end
+
+
+
+total calculado para o angulo de 5 graus
+i,j soma =
+
+   2.3942e+06
+   
+ 
+   
+j,i   soma =
+
+   2.1048e+06
+
+   
+total calculado para o angulo de 10 graus
+
+i,j soma =
+
+   2.9964e+05
+   
+j,i soma =
+
+   2.8177e+05
+
+   
+total calculado para o angulo de 15 graus
+
+i,j soma =
+
+   2.8147e+05
+
+
+j,i soma =
+
+   2.7591e+05
+
+20 graus   
+ i,j soma =
+
+   2.9960e+05
+
+   
+ j,isoma =
+
+   2.7037e+05
+
+##############################################################################
+
+primeiros resultados somados de 0 a 90 graus
+
+Columns 1 through 8
+
+         0    0.3675    0.7350    1.1025    1.4699    1.8374    2.2049    2.5724
+
+  Columns 9 through 16
+
+    2.9399    3.4607    3.8366    4.2125    4.5884    4.9643    5.3402    5.7161
+
+  Columns 17 through 20
+
+    6.0920    6.4679    6.8438    7.2197
+
+
+
+primeiros resultados somados de 0 a 90 graus
+
+Columns 1 through 10
+
+         0    0.4387    0.8774    1.3161    1.7548    2.1935    2.6322    3.0710    3.5097    3.9732
+
+  Columns 11 through 20
+
+    4.3491    4.7250    5.1009    5.4767    5.8526    6.2285    6.6044    6.9803    7.3562    7.7321
+
+  Column 21
+
+    8.1080
+
