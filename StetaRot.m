@@ -21,25 +21,36 @@ phy = 0;
 ang = 5;
 
 tam = 64;
-iters = 9;
+iters = 18;
 ultima_soma = 0;
 somas = zeros(iters, 1);
+metade = tam / 2;
 
 %for para o loop que armazena o conjunto de pontos de cada angulo
 for n = 1:iters
     %hipotenusa para angulo até 45 graus 
-    ca = tam/2;
+    ca = metade;
     hip  = ca/(cosd(ang));
     co = sind(ang)*hip;
     
     %encontra os pontos para até 45 graus
-    if (tam / 2 - co) < 1
-        phy = 1;
+    if ang <= 45
+        phx = tam;
+        if (metade - co) < 1
+            phy = 1;
+        else
+            phy = metade - co;
+        end
     else
-        phy = tam / 2 - co;
+        phy = 1;
+        if (metade + co) > tam
+            phx = tam;
+        else
+            phx = metade + co;
+        end
     end
-    phx = tam;
 
+        
     %traça a reta que vai do ponto inicial até os pontos encontrados em x e y
     [xs ys] = encontrapontos(pix,piy,pfy,phx,phy);
     
