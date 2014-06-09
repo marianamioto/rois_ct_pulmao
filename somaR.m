@@ -1,10 +1,15 @@
-p =1;
-somaR(p) = 0;
-while p < 32
-    for q = 1:8
-        i = raio(p).x(q)
-        j = raio(p).y(q)
-        somaR(p+1) = somaR(p) + mag(j,i);
+function somasR = somaR(raio,mag)
+
+    p =1;
+    somasR(p) = 0;
+    octantes = 8;
+    while p < 32
+        for q = 1:octantes
+            i = raio(p).x(q);
+            j = raio(p).y(q);
+            somasR(p+1) = somasR(p) + mag(j,i);
+        end
+        p = p+1;
     end
-    p = p+1
+    
 end
