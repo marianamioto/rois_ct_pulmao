@@ -1,7 +1,4 @@
-function[]=circle2(r,xc,yc) 
-r =1;
-xc = 32;
-yc = 32;
+function raio = circle2(r,xc,yc) 
 x = 0; 
 y = r; %recebe raio 
 d = (1 - r);
