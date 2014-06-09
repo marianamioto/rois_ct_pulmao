@@ -23,7 +23,7 @@ ang = 5;
 tam = 64;
 iters = 9;
 ultima_soma = 0;
-somas = zeros(iters);
+somas = zeros(iters, 1);
 
 %for para o loop que armazena o conjunto de pontos de cada angulo
 for n = 1:iters
