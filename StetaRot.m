@@ -6,12 +6,15 @@ img = imread('imagens/002_1.jpg');
 mag = abs((fftshift(fft2(img))));
 
 %VARIAVEIS
-%ponto inicial x e y
+%ponto inicial x e y do cateto adjacente
 pix = 32;
 piy = 32;
-%ponto final x e y
-pfx = 0;
-pfy = 0;
+%ponto final x e y do cateto adjacente
+pfx = 64;
+pfy = 32;
+%pontos finais da hipotenusa
+phx = 0;
+phy = 0;
 %esse pontos iram variam conforme o angulo muda
 
 %angulo inicial do algoritmo
@@ -31,23 +34,21 @@ for n = 1:iters
     
     %encontra os pontos para até 45 graus
     if (tam / 2 - co) < 1
-        pfy = 1;
+        phy = 1;
     else
-        pfy = tam / 2 - co;
+        phy = tam / 2 - co;
     end
-    
-    pfx = tam;
+    phx = tam;
 
     %traça a reta que vai do ponto inicial até os pontos encontrados em x e y
-    [x y] = bresenham(pix,piy,pfx,pfy);
-    
+    [xs ys] = encontrapontos(pix,piy,pfy,phx,phy);
     
     %coloca os pontos encontrados pelo algoritmo de bresenham na struct
-    ultima_soma = soma(x, y, ultima_soma, mag);
+    ultima_soma = soma(xs,ys, ultima_soma, mag);
     somas(n) = ultima_soma;
-    %linha(n).y = y;
+   
      
-        ang = ang + 5;
+    ang = ang + 5;
      
      
 end
